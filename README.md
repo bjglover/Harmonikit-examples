@@ -71,4 +71,4 @@ You'll also need to edit the following line to reflect the IP address of your iP
 
     (def client (osc/osc-client "iPad-IP-address-here" 8000))
 
-Check that you can change the sound by selecting and deselcting harmonics in the interface. For debugging purposes, you might find it useful to direct the Lemur app at the SuperCollider server port; 58009 if you use the above startup settings. This will produce a stream of error messages in Supercollider if the computer is listening to Lemur. Remember to change it back the port 4242 again to control Harmonikit.
+Check that you can change the sound by selecting and deselcting harmonics in the interface. (If not, then for debugging purposes, you might find it useful to direct the Lemur app at the SuperCollider server port; 58009 if you use the above startup settings. This will produce a stream of error messages in SuperCollider if the computer is listening to Lemur. Remember to change it back to port 4242 again to control Harmonikit.)
