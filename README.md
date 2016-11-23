@@ -91,4 +91,6 @@ I found that I could now move some sliders, then use (putpatch "patchname") and 
 
 ### A Quick Introduction to Harmonikit
 
-The basic idea of Harmonikt is that you can choose different harmonics to add to the sound by using the buttons  
+See the Wiki:
+
+https://github.com/bjglover/Harmonikit-examples/wiki
