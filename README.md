@@ -3,6 +3,7 @@
 Work in progress to create new patches and documentation for Harmonikit
 
 
+
 ### Introduction
 
 Harmonikit is an additive synthesiser created by Rich Hickey, and the subject of his talk at Clojure/conj 2013.
@@ -10,6 +11,7 @@ Harmonikit is an additive synthesiser created by Rich Hickey, and the subject of
 https://www.youtube.com/watch?v=bhkdyCPYgLs
 
 It was designed to work with "Overtone", a Clojure-based platform for synthesis and music
+
 
 
 ### Requirements
