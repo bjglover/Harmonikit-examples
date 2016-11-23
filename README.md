@@ -27,7 +27,7 @@ http://leiningen.org/
 Check you can open a REPL and run simple Clojure statements like: (+ 2 2)
 
 
-2) SuperCollider, the underlying synth engine. (I used the standalone version. See Resources folder for sample startup file.)
+2) SuperCollider is used as the underlying sound engine. (I used the standalone version, a requirement for Overtone with this OS.)
 
 http://supercollider.github.io/
 
