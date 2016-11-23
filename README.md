@@ -74,3 +74,17 @@ You'll also need to edit the following line to reflect the IP address of your iP
     (def client (osc/osc-client "iPad-IP-address-here" 8000))
 
 Check that you can change the sound by selecting and deselcting harmonics in the interface. (If not, then for debugging purposes, you might find it useful to direct the Lemur app at the SuperCollider server port; 58009 if you use the above startup settings. This will produce a stream of error messages in SuperCollider if the computer is listening to Lemur. Remember to change it back to port 4242 again to control Harmonikit.)
+
+### Tweaks
+
+After getting this far, I tried to figure out how to save and load patches. With only a basic understanding of Clojure, the code didn't make much sense to me, and I couldn't get the "load-patch" and "save-patch" functions to work in an obvious way. But after some experimenting that involved running different parts of the code in the REPL while inspecting files and values, I came up with a couple of new functions that seemed to do what I wanted:
+
+        (defn getpatch [p] (reset! apatch (load-patch p))
+        (patch->buf @apatch b)
+        (transmit-patch cchan @apatch))
+
+        (defn putpatch [p] (save-patch @apatch p))
+
+(I think part of the complication may be that the code was left open to support multitimbral performance in the future, but it hasn't yet been implemented.)
+
+I found that I could now move some sliders, then use (putpatch "patchname") and (getpatch "patchname") in the REPL to save and recall different sounds. (When loading a patch in this way, the app display updates to reflect the changes.) I was then able to get on with playing around with the instrument itself to create and save some different sounds, some of which you can find in the Resources folder.
