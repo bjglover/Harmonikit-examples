@@ -88,3 +88,7 @@ After getting this far, I tried to figure out how to save and load patches. With
 (I think part of the complication may be that the code was left open to support multitimbral performance in the future, but it hasn't yet been implemented.)
 
 I found that I could now move some sliders, then use (putpatch "patchname") and (getpatch "patchname") in the REPL to save and recall different sounds. (When loading a patch in this way, the app display updates to reflect the changes.) I was then able to get on with playing around with the instrument itself to create and save some different sounds, some of which you can find in the Resources folder.
+
+### A Quick Introduction to Harmonikit
+
+The basic idea of Harmonikt is that you can choose different harmonics to add to the sound by using the buttons  
