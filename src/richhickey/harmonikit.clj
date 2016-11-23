@@ -437,3 +437,15 @@
   ;; Stop all notes
 (srv/stop)
 )
+
+  ;; New experimental code added below
+  
+  ;; Simplified patch handling functions, eg (putpatch "mypatch"), getpatch ("mypatch")
+  
+(defn putpatch [p] (save-patch @apatch p))
+  
+(defn getpatch [p] 
+  (reset! apatch (load-patch p))
+  (patch->buf @apatch b)
+  (transmit-patch cchan @apatch))
+
