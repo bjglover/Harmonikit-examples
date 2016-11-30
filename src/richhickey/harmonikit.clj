@@ -23,7 +23,12 @@
             [clojure.java.io :as io]
             [clojure.pprint :as pp]
             ;; Needed to boot Overtone (Temporary)
-            [overtone.studio.mixer :as omix]))
+            [overtone.studio.mixer :as omix]
+            [overtone.libs.event :as eventing]
+            ;; Support for MIDI added in 2016
+            [overtone.studio.midi :as miding]
+            [overtone.midi :as midi]
+            [overtone.studio.midi-player :as mplayer]))
 
 ;; Boot the Overtone Server for live demo
 (defonce __AUTO-BOOT__
@@ -386,7 +391,7 @@
 (def apatch (atom patch))
 (def server (osc/osc-server 4242))
 
-(def client (osc/osc-client "richs-ipad.local" 8000))
+(def client (osc/osc-client "iPad-IP-address-here" 8000))
 (def cchan (async/chan 10))
 (chan->client cchan client)
 
@@ -438,14 +443,21 @@
 (srv/stop)
 )
 
-  ;; New experimental code added below
-  
-  ;; Simplified patch handling functions, eg (putpatch "mypatch"), getpatch ("mypatch")
-  
+;; Code below added for this demo in 2016
+
+;; New patch save/load functions
+
+(defn getpatch [p] (reset! apatch (load-patch p))
+(patch->buf @apatch b)
+(transmit-patch cchan @apatch))
+
 (defn putpatch [p] (save-patch @apatch p))
-  
-(defn getpatch [p] 
-  (reset! apatch (load-patch p))
-  (patch->buf @apatch b)
-  (transmit-patch cchan @apatch))
+
+;; Create a polyphonic player for Harmonikit with a MIDI keyboard
+
+(def harmoniplayer (mplayer/midi-poly-player harmonikit))
+
+;; Set up a MIDI input
+
+;; (def keyboard (midi/midi-in)
 
